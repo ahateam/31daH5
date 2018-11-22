@@ -18,6 +18,8 @@
 
             <van-cell title="content">
                 <van-button type="default" @click="createContent">createContent</van-button>
+
+                <van-button type="default" @click="getContentById">getContentById</van-button>
             </van-cell>
         </van-cell-group>
 
@@ -81,6 +83,11 @@
                     "testTitle", "testOrigin", "testMeta", data, function (data) {
                         alert(JSON.stringify(data.data));
                     })
+            },
+            getContentById: function () {
+                ctrl_content.api.getContentById(ctrl_content.defaultUser, "394978207098659", function (data) {
+                    alert(JSON.stringify(data.data));
+                })
             }
         }
     }

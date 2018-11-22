@@ -52,8 +52,9 @@ api.createContent = function (userId, type, level, upChannelId, title, origin, m
     util.call(baseUrl + 'createContent', cnt, callback)
 }
 
-api.getContentById = function (contentId, callback) {
+api.getContentById = function (userId, contentId, callback) {
     let cnt = {
+        userId: userId,
         contentId: contentId,
     };
     util.call(baseUrl + 'getContentById', cnt, callback);
