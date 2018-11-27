@@ -198,8 +198,4 @@ api.loginInORG = function (orgId, userId, callback) {
     util.call(baseUrl + 'loginInORG', cnt, callback);
 }
 
-api.export
-default
-{
-    api, share, duty
-}
+export default {api, share, duty}
