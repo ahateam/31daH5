@@ -16,11 +16,17 @@
                 <van-button type="default" @click="getUserById">getUserById</van-button>
             </van-cell>
 
+            <van-cell title="tag">
+                <van-button type="default" @click="createTag">createTag</van-button>
+
+                <van-button type="default" @click="getTags">getTags</van-button>
+            </van-cell>
             <van-cell title="content">
                 <van-button type="default" @click="createContent">createContent</van-button>
 
                 <van-button type="default" @click="getContentById">getContentById</van-button>
             </van-cell>
+
         </van-cell-group>
 
 
@@ -34,6 +40,8 @@
     import ctrl_test from '../assets/js/api/test'
 
     import ctrl_user from '../assets/js/api/user'
+
+    import ctrl_tag from '../assets/js/api/tag'
 
     import ctrl_content from '../assets/js/api/content'
 
@@ -76,18 +84,28 @@
                     content: "<div>this is a test content</div>"
                 };
 
-                ctrl_content.api.createContent(ctrl_content.defaultUser,//
+                ctrl_content.api.createContent(0,//
                     ctrl_content.type.H5,//
                     ctrl_content.level.PUBLIC, //
-                    ctrl_content.defaultChannel,//
+                    0,//
                     "testTitle", "testOrigin", "testMeta", data, function (data) {
                         alert(JSON.stringify(data.data));
                     })
             },
             getContentById: function () {
-                ctrl_content.api.getContentById(ctrl_content.defaultUser, "394978207098659", function (data) {
+                ctrl_content.api.getContentById(0, "394992395864434", function (data) {
                     alert(JSON.stringify(data.data));
                 })
+            },
+            createTag: function () {
+                ctrl_tag.api.createTag(0, "tagKind", "tagType", "tagName", function (data) {
+                    alert(JSON.stringify(data.data));
+                });
+            },
+            getTags: function () {
+                ctrl_tag.api.getTags(0, "tagKind", "tagType", function (data) {
+                    alert(JSON.stringify(data.data));
+                });
             }
         }
     }

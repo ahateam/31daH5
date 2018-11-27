@@ -34,9 +34,6 @@ const level = {
     PUBLIC: 0,
 };
 
-const defaultUser = 0;
-const defaultChannel = 0;
-
 
 api.createContent = function (userId, type, level, upChannelId, title, origin, meta, data, callback) {
     let cnt = {
@@ -60,18 +57,69 @@ api.getContentById = function (userId, contentId, callback) {
     util.call(baseUrl + 'getContentById', cnt, callback);
 }
 
-api.queryContentsByTag = function (type, tagKey, tags, count, offset, callback) {
+api.addContentTags = function (userId, contentId, tagKind, tagType, tags, callback) {
     let cnt = {
-        appId: appId,
-        userId: "1",
-        type: type,
-        tagKey: tagKey,
+        userId: userId,
+        contentId: contentId,
+        tagKind: tagKind,
+        tagType: tagType,
+        tags: tags,
+    };
+    util.call(baseUrl + 'addContentTags', cnt, callback);
+}
+
+api.removeContentTags = function (userId, contentId, tagKind, tagType, tags, callback) {
+    let cnt = {
+        userId: userId,
+        contentId: contentId,
+        tagKind: tagKind,
+        tagType: tagType,
+        tags: tags,
+    };
+    util.call(baseUrl + 'removeContentTags', cnt, callback);
+}
+
+api.queryContents = function (userId, contentType, status, level, upUserId, upChannelId, tagKind, tagType, tags, count, offset, callback) {
+    let cnt = {
+        userId: userId,
+        contentType: contentType,
+        status: status,
+        level: level,
+        upUserId: upUserId,
+        upChannelId: upChannelId,
+        tagKind: tagKind,
+        tagType: tagType,
         tags: tags,
         count: count,
         offset: offset,
     };
-
-    util.call(baseUrl + 'content/queryContents', cnt, callback);
+    util.call(baseUrl + 'queryContents', cnt, callback);
 }
 
-export default {api, type, level, defaultUser, defaultChannel}
+api.searchContents = function (userId, contentType, status, level, upUserId, upChannelId, keyword, count, offset, callback) {
+    let cnt = {
+        userId: userId,
+        contentType: contentType,
+        status: status,
+        level: level,
+        upUserId: upUserId,
+        upChannelId: upChannelId,
+        keyword: keyword,
+        count: count,
+        offset: offset,
+    };
+    util.call(baseUrl + 'searchContents', cnt, callback);
+}
+
+
+api.getContentTags = function (userId, contentId, tagKind, tagType, callback) {
+    let cnt = {
+        userId: userId,
+        contentId: contentId,
+        tagKind: tagKind,
+        tagType: tagType,
+    };
+    util.call(baseUrl + 'getContentTags', cnt, callback);
+}
+
+export default {api, type, level}
