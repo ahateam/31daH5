@@ -4,6 +4,27 @@ const baseUrl = "http://localhost:8080/zero/org/";
 
 let api = {};
 
+
+/**
+ *股东类型
+ */
+const share = {
+    SHARE_NONE: 20,// 非股东
+    SHARE_SHAREHOLDER: 21, //股东
+    SHARE_REPRESENTATIVE: 22,//股东代表
+};
+
+/**
+ * 董事类型
+ */
+const duty = {
+    DUTY_NONE: 10,//非董事
+    DUTY_DIRECTOR: 11,// 董事
+    DUTY_CHAIRMAN: 12,// 董事长（主席）
+    DUTY_VICE_CHAIRMAN: 13,// 副董事长
+};
+
+
 /**
  * 创建组织
  *
@@ -180,5 +201,5 @@ api.loginInORG = function (orgId, userId, callback) {
 api.export
 default
 {
-    api
+    api, share, duty
 }
