@@ -22,6 +22,10 @@
 
                 <van-button type="default" @click="getORGDirectors">getORGDirectors</van-button>
 
+                <van-button type="default" @click="getORGShareholders">getORGShareholders</van-button>
+
+                <van-button type="default" @click="getORGSupervisors">getORGSupervisors</van-button>
+
             </van-cell>
 
         </van-cell-group>
@@ -89,6 +93,16 @@
             },
             getORGDirectors: function () {
                 ctrl_org.api.getORGDirectors("395109308203032", 10, 0, function (data) {
+                    alert(JSON.stringify(data.data));
+                })
+            },
+            getORGShareholders: function () {
+                ctrl_org.api.getORGShareholders("395109308203032", 10, 0, function (data) {
+                    alert(JSON.stringify(data.data));
+                })
+            },
+            getORGSupervisors: function () {
+                ctrl_org.api.getORGSupervisors("395109308203032", 10, 0, function (data) {
                     alert(JSON.stringify(data.data));
                 })
             },

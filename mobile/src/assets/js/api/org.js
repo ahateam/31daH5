@@ -212,7 +212,7 @@ api.loginInORG = function (orgId, userId, callback) {
 
 
 /**
- * 获取组织董事会信息
+ * 获取组织董事会成员列表
  *
  * @param orgId
  *            组织编号
@@ -229,6 +229,48 @@ api.getORGDirectors = function (orgId, count, offset, callback) {
         offset: offset,
     };
     util.call(baseUrl + 'getORGDirectors', cnt, callback);
+}
+
+
+/**
+ * 获取组织股东成员列表
+ *
+ * @param orgId
+ *            组织编号
+ * @param count
+ *            数量（用于分页）
+ * @param offset
+ *            起始位置（从零开始，用于分页）
+ * @return 股东成员列表
+ */
+api.getORGShareholders = function (orgId, count, offset, callback) {
+    let cnt = {
+        orgId: orgId,
+        count: count,
+        offset: offset,
+    };
+    util.call(baseUrl + 'getORGShareholders', cnt, callback);
+}
+
+
+/**
+ * 获取组织监事会成员列表
+ *
+ * @param orgId
+ *            组织编号
+ * @param count
+ *            数量（用于分页）
+ * @param offset
+ *            起始位置（从零开始，用于分页）
+ * @return 监事会成员列表
+ */
+api.getORGSupervisors = function (orgId, count, offset, callback) {
+    let cnt = {
+        orgId: orgId,
+        count: count,
+        offset: offset,
+    };
+    util.call(baseUrl + 'getORGSupervisors', cnt, callback);
 }
 
 export default {api, share, duty, visor}

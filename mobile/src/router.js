@@ -29,5 +29,10 @@ export default new Router({
             name: 'orgtest',
             component: () => import(/* webpackChunkName: "about" */ './views/ORGTest.vue')
         },
+        {
+            path: '/vote',
+            name: 'vote',
+            component: () => import(/* webpackChunkName: "about" */ './views/VoteTest.vue')
+        },
     ]
 })
