@@ -1,6 +1,6 @@
 import util from '../util'
 
-const baseUrl = "http://localhost:8080/zero/org/";
+const baseUrl = util.hosturl + "/org/";
 
 let api = {};
 
@@ -15,7 +15,7 @@ const share = {
 };
 
 /**
- * 董事类型
+ * 董事会成员类型
  */
 const duty = {
     DUTY_NONE: 10,//非董事
@@ -24,6 +24,15 @@ const duty = {
     DUTY_VICE_CHAIRMAN: 13,// 副董事长
 };
 
+/**
+ * 监事会成员类型
+ */
+const visor = {
+    VISOR_NONE: 10,// 非监事
+    VISOR_SUPERVISOR: 11,// 监事
+    VISOR_CHAIRMAN: 12,// 监事长（主席）
+    VISOR_VICE_SUPERVISOR: 13,// 副监事长
+}
 
 /**
  * 创建组织
@@ -148,9 +157,11 @@ api.getUserORGs = function (userId, callback) {
  *            股东权重
  * @param duty
  *            董事会职务类型
+ * @param visor
+ *            监事会职务类型
  *
  */
-api.importUser = function (orgId, mobile, name, idNumber, share, weight, duty, callback) {
+api.importUser = function (orgId, mobile, name, idNumber, share, weight, duty, visor, callback) {
     let cnt = {
         orgId: orgId,
         mobile: mobile,
@@ -159,6 +170,7 @@ api.importUser = function (orgId, mobile, name, idNumber, share, weight, duty, c
         share: share,
         weight: weight,
         duty: duty,
+        visor: visor,
     };
     util.call(baseUrl + 'importUser', cnt, callback);
 }
@@ -198,4 +210,25 @@ api.loginInORG = function (orgId, userId, callback) {
     util.call(baseUrl + 'loginInORG', cnt, callback);
 }
 
-export default {api, share, duty}
+
+/**
+ * 获取组织董事会信息
+ *
+ * @param orgId
+ *            组织编号
+ * @param count
+ *            数量（用于分页）
+ * @param offset
+ *            起始位置（从零开始，用于分页）
+ * @return 董事会成员列表
+ */
+api.getORGDirectors = function (orgId, count, offset, callback) {
+    let cnt = {
+        orgId: orgId,
+        count: count,
+        offset: offset,
+    };
+    util.call(baseUrl + 'getORGDirectors', cnt, callback);
+}
+
+export default {api, share, duty, visor}

@@ -1,6 +1,8 @@
 import axios from 'axios'
 import CryptoJS from 'crypto-js'
 
+const hosturl = "http://192.168.1.143:8080/zero";
+
 /**
  * 返回错误码常量预定义
  */
@@ -72,6 +74,6 @@ function isBlank(str) {
 };
 
 
-export default {RC, call, isBlank}
+export default {RC, call, isBlank,hosturl}
 
 

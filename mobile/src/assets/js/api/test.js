@@ -1,6 +1,6 @@
 import util from '../util'
 
-const baseUrl = "http://localhost:8080/zero/test/";
+const baseUrl = util.hosturl + "/test/";
 
 let api = {};
 
