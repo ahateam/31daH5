@@ -34,18 +34,21 @@ const opt = {
  *            投票类型，单选多选
  * @param choiceCount
  *            多选数量限制
+ * @param startTime
+ *            开始日期
  * @param expiryTime
  *            截止日期
  * @return 创建的投票对象
  *
  */
-api.createVote = function (orgId, title, remark, type, choiceCount, expiryTime, callback) {
+api.createVote = function (orgId, title, remark, type, choiceCount, startTime, expiryTime, callback) {
     let cnt = {
         orgId: orgId,
         title: title,
         remark: remark,
         type: type,
         choiceCount: choiceCount,
+        startTime: startTime,
         expiryTime: expiryTime,
     };
     util.call(baseUrl + 'createVote', cnt, callback);
@@ -188,6 +191,23 @@ api.getVoteDetail = function (voteId, callback) {
         voteId: voteId,
     };
     util.call(baseUrl + 'getVoteDetail', cnt, callback);
+}
+
+/**
+ * 获取用户的选票
+ *
+ * @param voteId
+ *            投票编号
+ * @param userId
+ *            用户编号
+ *
+ */
+api.getVoteTicket = function (voteId, userId, callback) {
+    let cnt = {
+        voteId: voteId,
+        userId: userId,
+    };
+    util.call(baseUrl + 'getVoteTicket', cnt, callback);
 }
 
 export default {api, type, opt}

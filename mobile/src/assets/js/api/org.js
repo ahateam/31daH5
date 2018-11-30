@@ -177,6 +177,75 @@ api.importUser = function (orgId, mobile, name, idNumber, share, weight, duty, v
 
 
 /**
+ * 修改用户信息，身份证信息不能修改
+ *
+ * @param userId
+ *            用户编号
+ * @param mobile
+ *            手机号（非必填）
+ * @param name
+ *            名称（非必填）
+ * @param pwd
+ *            密码（非必填）
+ */
+api.updateUser = function (userId, mobile, name, pwd, callback) {
+    let cnt = {
+        userId: userId,
+        mobile: mobile,
+        name: name,
+        pwd: pwd,
+    };
+    util.call(baseUrl + 'updateUser', cnt, callback);
+}
+
+/**
+ * 移除组织用户，不会影响user表
+ *
+ * @param orgId
+ *            组织编号
+ * @param userId
+ *            用户编号
+ *
+ */
+api.removeORGUser = function (orgId, userId, callback) {
+    let cnt = {
+        orgId: orgId,
+        userId: userId,
+    };
+    util.call(baseUrl + 'removeORGUser', cnt, callback);
+}
+
+/**
+ * 更新组织用户，不会影响user表
+ *
+ * @param orgId
+ *            组织编号
+ * @param userId
+ *            用户编号
+ * @param share
+ *            股东身份类型（非必填）
+ * @param weight
+ *            股东权重（非必填）
+ * @param duty
+ *            董事会职务类型（非必填）
+ * @param visor
+ *            监事会职务类型（非必填）
+ *
+ */
+api.updateORGUser = function (orgId, userId, share, weight, duty, visor, callback) {
+    let cnt = {
+        orgId: orgId,
+        userId: userId,
+        share: share,
+        weight: weight,
+        duty: duty,
+        visor: visor,
+    };
+    util.call(baseUrl + 'updateORGUser', cnt, callback);
+}
+
+
+/**
  * 手机号密码登录
  *
  * @param mobile
