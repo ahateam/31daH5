@@ -126,6 +126,20 @@ api.getORGs = function (count, offset, callback) {
 }
 
 /**
+ * 获取组织详细信息
+ *
+ * @param orgId
+ *            组织编号（必填）
+ * @return 组织对象
+ */
+api.getORGById = function (orgId, callback) {
+    let cnt = {
+        orgId: orgId,
+    };
+    util.call(baseUrl + 'getORGById', cnt, callback);
+}
+
+/**
  * 获取用户的组织列表
  *
  * @param userId
