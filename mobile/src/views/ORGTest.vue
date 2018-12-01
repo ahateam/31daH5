@@ -14,6 +14,8 @@
 
                 <van-button type="default" @click="getORGs">getORGs</van-button>
 
+                <van-button type="default" @click="updateORGUser">updateORGUser</van-button>
+
                 <van-button type="default" @click="importUser">importUser</van-button>
 
                 <van-button type="default" @click="loginByMobileAndPwd">loginByMobileAndPwd</van-button>
@@ -72,6 +74,15 @@
                 ctrl_org.api.getORGs(10, 0, function (data) {
                     alert(JSON.stringify(data.data));
                 })
+            },
+
+
+            updateORGUser: function () {
+                ctrl_org.api.updateORGUser("395109308203032", "395153000894227", ctrl_org.share.SHARE_SHAREHOLDER, 2, ctrl_org.duty.DUTY_NONE, ctrl_org.visor.VISOR_NONE
+                    , function (data) {
+                        alert(JSON.stringify(data.data));
+                    }
+                )
             },
             importUser: function () {
                 //orgId, mobile, name, idNumber, share, weight, duty, visor
