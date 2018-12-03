@@ -161,8 +161,8 @@ api.getUserORGs = function (userId, callback) {
  *            组织编号
  * @param mobile
  *            手机号
- * @param name
- *            名称
+ * @param realName
+ *            用户真实姓名
  * @param idNumber
  *            身份证号
  * @param share
@@ -175,11 +175,11 @@ api.getUserORGs = function (userId, callback) {
  *            监事会职务类型
  *
  */
-api.importUser = function (orgId, mobile, name, idNumber, share, weight, duty, visor, callback) {
+api.importUser = function (orgId, mobile, realName, idNumber, share, weight, duty, visor, callback) {
     let cnt = {
         orgId: orgId,
         mobile: mobile,
-        name: name,
+        realName: realName,
         idNumber: idNumber,
         share: share,
         weight: weight,
@@ -197,16 +197,16 @@ api.importUser = function (orgId, mobile, name, idNumber, share, weight, duty, v
  *            用户编号
  * @param mobile
  *            手机号（非必填）
- * @param name
- *            名称（非必填）
+ * @param realName
+ *            用户真实姓名（非必填）
  * @param pwd
  *            密码（非必填）
  */
-api.updateUser = function (userId, mobile, name, pwd, callback) {
+api.updateUser = function (userId, mobile, realName, pwd, callback) {
     let cnt = {
         userId: userId,
         mobile: mobile,
-        name: name,
+        realName: realName,
         pwd: pwd,
     };
     util.call(baseUrl + 'updateUser', cnt, callback);

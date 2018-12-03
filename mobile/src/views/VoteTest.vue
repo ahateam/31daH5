@@ -59,7 +59,7 @@
             createVote: function () {
                 //时间用数字格式
                 ctrl_vote.api.createVote("395109308203032", "这是第一个投票", "备注", //
-                    ctrl_vote.type.TYPE_SINGLE, 0, new Date().getTime(), function (data) {
+                    ctrl_vote.type.TYPE_SINGLE, 0, new Date().getTime(), new Date().getTime(), function (data) {
                         alert(JSON.stringify(data.data));
                     })
             },
@@ -69,12 +69,12 @@
                 })
             },
             addVoteOption: function () {
-                ctrl_vote.api.addVoteOption("395110831225576", "选项x", "备注x", function (data) {
+                ctrl_vote.api.addVoteOption("395175855117534", "选项x", "备注x", function (data) {
                     alert(JSON.stringify(data.data));
                 })
             },
             getVoteOptions: function () {
-                ctrl_vote.api.getVoteOptions("395110831225576", function (data) {
+                ctrl_vote.api.getVoteOptions("395175855117534", function (data) {
                     alert(JSON.stringify(data.data));
                 })
             },
