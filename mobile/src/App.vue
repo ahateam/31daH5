@@ -6,7 +6,8 @@
       <router-link to="/test">Test</router-link> |
       <router-link to="/orgtest">ORGTest</router-link> |
       <router-link to="/vote">VoteTest</router-link> |
-      <router-link to="/oss">OSSTest</router-link>
+      <router-link to="/oss">OSSTest</router-link> |
+      <router-link to="/excel">ExcelTest</router-link> |
     </div>
     <router-view/>
   </div>

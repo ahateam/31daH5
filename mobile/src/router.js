@@ -39,5 +39,10 @@ export default new Router({
             name: 'oss',
             component: () => import(/* webpackChunkName: "about" */ './views/OSS.vue')
         },
+        {
+            path: '/excel',
+            name: 'excel',
+            component: () => import(/* webpackChunkName: "about" */ './views/Excel.vue')
+        },
     ]
 })
