@@ -5,6 +5,10 @@
         <van-cell-group>
             <van-cell title="test">
                 <van-button type="default" @click="testapi">testapi</van-button>
+                <van-button type="default" @click="newapi">newapi</van-button>
+                <van-button type="default" @click="newapi2">newapi2</van-button>
+
+
             </van-cell>
             <van-cell title="user">
                 <van-button type="default" @click="registByNameAndPwd">registByNameAndPwd</van-button>
@@ -55,6 +59,16 @@
         methods: {
             testapi: function () {
                 ctrl_test.api.postapi(function (data) {
+                    alert(JSON.stringify(data.data));
+                })
+            },
+            newapi:function(){
+                ctrl_test.api.newapi(function (data) {
+                    alert(JSON.stringify(data.data));
+                })
+            },
+            newapi2:function(){
+                ctrl_test.api.newapi2(function (data) {
                     alert(JSON.stringify(data.data));
                 })
             },

@@ -34,5 +34,10 @@ export default new Router({
             name: 'vote',
             component: () => import(/* webpackChunkName: "about" */ './views/VoteTest.vue')
         },
+        {
+            path: '/oss',
+            name: 'oss',
+            component: () => import(/* webpackChunkName: "about" */ './views/OSS.vue')
+        },
     ]
 })

@@ -64,7 +64,7 @@
                     })
             },
             getVotes: function () {
-                ctrl_vote.api.getVotes("395109308203032", 10, 0, function (data) {
+                ctrl_vote.api.getVotes("395109308203032", 512, 0, function (data) {
                     alert(JSON.stringify(data.data));
                 })
             },
