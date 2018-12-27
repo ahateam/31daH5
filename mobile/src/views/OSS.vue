@@ -6,9 +6,8 @@
 
         <div>
             <div>
-                <button type="button">upload</button>
                 <input type="file" id="id" @change="doUpload($event)"/>
-                <div>{{videoName}}</div>
+                <div>完成了--{{curProcess}}</div>
             </div>
         </div>
 
@@ -20,7 +19,8 @@
 
 <script>
 
-    let OSS = require('ali-oss');
+
+    import OSS from 'ali-oss';
 
     let client = new OSS({
         region: 'oss-cn-hangzhou',
@@ -34,27 +34,28 @@
         name: 'home',
         data() {
             return {
-                videoName: '',
-                videoUrl: '',
-                size: '',
+                curProcess: 0,
             }
         },
         methods: {
+            getProgress(p) {
+                console.error("完成了 " + p);
+                this.curProcess = p;
+
+            },
             doUpload(event) {
-                this.$emit('getProgress', 0)
-                let file = event.target.files
-                this.size = file[0].size
-                let tmpArr = file[0].name.split('.')
-                let tmpName = encodeURIComponent(file)
-                tmpName = tmpName + '.' + tmpArr[1]
-                this.multipartUpload(tmpName, file[0])
+                // this.$emit('getProgress', 0);
+                this.getProgress(0);
+                let file = event.target.files;
+                this.multipartUpload(encodeURIComponent(file[0].name), file[0]);
             },
             multipartUpload(upName, upFile) {
                 //Vue中封装的分片上传方法（详见官方文档）
                 let _this = this
                 const progress = async function (p) {
                     //项目中需获取进度条，故调用进度回调函数（详见官方文档）
-                    _this.$emit('getProgress', Math.round(p * 100))
+                    // _this.$emit('getProgress', Math.round(p * 100))
+                    _this.getProgress(Math.round(p * 100));
                 }
                 try {
                     let result = client.multipartUpload(upName, upFile, {
